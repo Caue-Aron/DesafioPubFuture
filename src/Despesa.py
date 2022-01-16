@@ -22,9 +22,7 @@ class Despesa:
         
 # ---------------------------------------
 # gui
-    def acessa(self, saldo:float, conta_id:int):
-        
-        
+    def acessa(self, saldo:float, conta_id:int):        
         while True:
             clear()
             print('O que você deseja fazer? Pressione qualquer outra tecla para sair\n')
@@ -111,10 +109,7 @@ class Despesa:
 
             else:
                 return
-
-    def print(self):
-        print(f"|{self.get_tipo()}\t|{self.get_data_pgmto_esperado()}\t\t\t|{self.get_valor()}\t\t|{self.get_situacao()}")
-        
+            
 # ---------------------------------------
 # getters, setters e
 # loaders e savers para o banco
