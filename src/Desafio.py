@@ -12,12 +12,10 @@ class Main:
     contas = []
     contas_list = []
     
-    Padroes.host = "127.1.0.1"
-    Padroes.user = "root"
-    Padroes.password = "ca150703"
-    Padroes.database = "desafio"
-    
     def iniciar(self):
+        clear()
+        self.set_banco()
+        
         clear()
         self.tela_inicial()
 
@@ -180,6 +178,61 @@ class Main:
             print(f"[{count}] |{conta.get_instituicao()}")
             count = count + 1
 
+    def set_banco(self):        
+        host = ''
+        while True:
+            print('Insira o TCP do banco, no formato 000.0.0.0:')
+            host = str(input())
+            
+            if len(host) != 9:
+                print(f'Você digitou uma quantidade inválida de caracteres ({len(host)}). Digite apenas nove\n')
+                continue
+            
+            if host[:3].isdigit():
+                if host[3:4] == '.':
+                    if host[4:5].isdigit():
+                        if host[5:6] == '.':
+                            if host[6:7].isdigit():
+                                if host[7:8] == '.':
+                                    if host[8:9].isdigit():
+                                        break
+                                    else:
+                                        print(f"Você digitou '{host[8:9]}'. O 9° digito deve ser um número positivo.\n")
+                                        continue
+                                else:
+                                    print(f"Você digitou '{host[7:8]}'. O 8° digito deve ser um ponto.\n")
+                                    continue
+                            else:
+                                print(f"Você digitou '{host[6:7]}'. O 7° digito deve ser um número positivo.\n")
+                                continue
+                        else:
+                            print(f"Você digitou '{host[5:6]}'. O 6° digito deve ser um ponto.\n")
+                            continue
+                    else:
+                        print(f"Você digitou '{host[4:5]}'. O 5° digito deve ser um número positivo.\n")
+                        continue
+                else:
+                    print(f"Você digitou '{host[3:4]}'. O 4° digito deve ser um ponto.\n")
+                    continue
+            else:
+                print(f"Você digitou '{host[:3]}'. Os primeiros 3 dígitos devem ser números positivos.\n")
+                continue
+        
+        print('Insira o usuario: ') 
+        user = str(input())
+        
+        print('Insira a senha: ')
+        senha = str(input())
+        
+        print('Insira a database: ')
+        database = str(input())
+        
+        Padroes.host = host
+        Padroes.user = user
+        Padroes.password = senha
+        Padroes.database = database
+                    
+        
 # -------------------------------
 # funções de banco
     def carrega_contas(self):
