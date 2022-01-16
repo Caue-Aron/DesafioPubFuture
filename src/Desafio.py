@@ -179,44 +179,8 @@ class Main:
             count = count + 1
 
     def set_banco(self):        
-        host = ''
-        while True:
-            print('Insira o TCP do banco, no formato 000.0.0.0:')
-            host = str(input())
-            
-            if len(host) != 9:
-                print(f'Você digitou uma quantidade inválida de caracteres ({len(host)}). Digite apenas nove\n')
-                continue
-            
-            if host[:3].isdigit():
-                if host[3:4] == '.':
-                    if host[4:5].isdigit():
-                        if host[5:6] == '.':
-                            if host[6:7].isdigit():
-                                if host[7:8] == '.':
-                                    if host[8:9].isdigit():
-                                        break
-                                    else:
-                                        print(f"Você digitou '{host[8:9]}'. O 9° digito deve ser um número positivo.\n")
-                                        continue
-                                else:
-                                    print(f"Você digitou '{host[7:8]}'. O 8° digito deve ser um ponto.\n")
-                                    continue
-                            else:
-                                print(f"Você digitou '{host[6:7]}'. O 7° digito deve ser um número positivo.\n")
-                                continue
-                        else:
-                            print(f"Você digitou '{host[5:6]}'. O 6° digito deve ser um ponto.\n")
-                            continue
-                    else:
-                        print(f"Você digitou '{host[4:5]}'. O 5° digito deve ser um número positivo.\n")
-                        continue
-                else:
-                    print(f"Você digitou '{host[3:4]}'. O 4° digito deve ser um ponto.\n")
-                    continue
-            else:
-                print(f"Você digitou '{host[:3]}'. Os primeiros 3 dígitos devem ser números positivos.\n")
-                continue
+        print('Insira o TCP: ')
+        host = str(input())
         
         print('Insira o usuario: ') 
         user = str(input())
