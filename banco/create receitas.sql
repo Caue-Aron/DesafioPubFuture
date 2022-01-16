@@ -1,4 +1,4 @@
-create table RECEITA(
+create table RECEITAS(
     ID int unsigned auto_increment primary key,
     VALOR double,
     DATA_PAGAMENTO date,    
