@@ -77,7 +77,7 @@ class Receita:
                 data_recebimento = Receita.input_data_recebimento(self.id)
                 
                 if valor and data_recebimento_esperado and tipo and data_recebimento and descricao:
-                    executa_query(f"update RECEITAS set VALOR = {valor}, DATA_RECEBIMENTO = '{data_recebimento}', DATA_RECEBIMENTO_ESPERADO = '{data_recebimento_esperado}', TIPO = '{tipo}', DESCRICAO = '{descricao}' where ID = {self.id}")
+                    executa_query(f"update RECEITAS set VALOR = {valor}, DATA_RECEBIMENTO = '{data_recebimento}', DATA_RECEBIMENTO_PREVISTO = '{data_recebimento_esperado}', TIPO = '{tipo}', DESCRICAO = '{descricao}' where ID = {self.id}")
                     self.set_receita(self.id, valor, data_recebimento_esperado, tipo, data_recebimento)
                                
             elif decisao == 3:
@@ -106,9 +106,6 @@ class Receita:
             else:
                 return
 
-    def print(self):
-        print(f"|{self.get_tipo()}\t|{self.get_data_pgmto_esperado()}\t\t\t|{self.get_valor()}\t\t|{self.get_situacao()}")
-        
 # ---------------------------------------
 # getters, setters e
 # loaders e savers para o banco
